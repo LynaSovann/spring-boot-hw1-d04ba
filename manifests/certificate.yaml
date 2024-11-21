@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: spring-boot-hw1-d04ba-certificate
+  namespace: spring-boot-hw1-d04ba
+spec:
+  secretName: spring-boot-hw1-d04ba-secret-tls
+  commonName: davin-sovann0415-spring-boot-hw1.assessify.org
+  dnsNames:
+  - davin-sovann0415-spring-boot-hw1.assessify.org
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
