@@ -1,0 +1,28 @@
+ apiVersion: networking.k8s.io/v1
+ kind: Ingress
+ metadata:
+   name: spring-boot-hw1-d04ba-https-ingress
+   namespace: spring-boot-hw1-d04ba
+   annotations:
+     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+     nginx.ingress.kubernetes.io/use-regex: "true"
+     nginx.ingress.kubernetes.io/proxy-body-size: 8m    
+     nginx.ingress.kubernetes.io/rewrite-target: /
+ spec:
+   ingressClassName: nginx
+   tls:
+     - hosts:
+         - davin-sovann0415-spring-boot-hw1.assessify.org
+       secretName: spring-boot-hw1-d04ba-secret-tls
+   rules:
+     - host: davin-sovann0415-spring-boot-hw1.assessify.org
+       http:
+         paths:
+           - path: /
+             pathType: Prefix
+             backend:
+               service:
+                 name: spring-boot-hw1-d04ba-service
+                 port:
+                   number: 8231
+ 
