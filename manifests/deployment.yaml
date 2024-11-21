@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-hw1-d04ba-deployment
+  labels:
+    app: spring-boot-hw1-d04ba
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-boot-hw1-d04ba
+  template:
+    metadata:
+      labels:
+        app: spring-boot-hw1-d04ba
+    spec:
+      containers:
+        - name: spring-boot-hw1-d04ba-container
+          image: pipejet/spring-boot-hw1-d04ba:latest
+          ports:
+            - containerPort: 8080
